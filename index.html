@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rolling Dice</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice {
+  width: 400px;
+  height: 400px;
+  background-color: rgb(234, 32, 207);
+  border: 2px solid #17a3b9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.roll {
+  animation: roll 2s ease-out;
+}
+
+@keyframes roll {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(1080deg) rotateY(1080deg) rotateZ(1080deg); }
+}
+</style>
+</head>
+<body>
+<div class="dice" id="dice">Click to roll</div>
+<script>
+var dice = document.getElementById('dice');
+
+dice.addEventListener('click', function() {
+  var roll = Math.floor(Math.random() * 6) + 1; // Generate a random number between 1 and 6
+  dice.textContent = roll; // Display the number on the dice
+
+  // Add the roll animation class and remove it after the animation ends
+  dice.classList.add('roll');
+  setTimeout(function() {
+    dice.classList.remove('roll');
+  }, 1000);
+});
+</script>
+</body>
+</html>
